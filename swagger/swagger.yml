@@ -1,0 +1,46 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /order/:
+    post:
+      tags:
+      - order
+      description: Capture order GET
+      responses:
+        "200":
+          description: '{string} count of orders in the database'
+        "403":
+          description: body is empty
+definitions:
+  bson.ObjectId:
+    title: ObjectId
+    type: object
+  models.Order:
+    title: Order
+    type: object
+    properties:
+      emailAddress:
+        type: string
+      id:
+        $ref: '#/definitions/bson.ObjectId'
+      product:
+        type: string
+      status:
+        type: string
+      total:
+        type: number
+        format: double
+tags:
+- name: order
+  description: |
+    Operations about object
